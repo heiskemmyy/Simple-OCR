@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const express = require("express");
 const multer = require("multer");
 const Tesseract = require("tesseract.js");
@@ -5,7 +7,7 @@ const pdfParse = require("pdf-parse");
 const os = require("os");
 const path = require("path");
 const fs = require("fs");
-const port = 4000;
+const port = 4001;
 
 const app = express();
 const upload = multer({ dest: "uploads/" });
@@ -33,6 +35,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
   } else if (fileType.startsWith("image/")) {
     Tesseract.recognize(filePath, "eng", {
       logger: (m) => console.log(m),
+      langPath: path.join(__dirname, 'tessdata')
     })
       .then(({ data: { text } }) => {
         res.json({ text });
