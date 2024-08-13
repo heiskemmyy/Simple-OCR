@@ -15,7 +15,7 @@ document.getElementById('fileUpload').addEventListener('change', (event) => {
     }
 });
 
-document.getElementById('convertButton').addEventListener('click', () => {
+const convertFileToText = () => {
     const fileUpload = document.getElementById('fileUpload').files[0];
     if (fileUpload) {
         const formData = new FormData();
@@ -33,12 +33,25 @@ document.getElementById('convertButton').addEventListener('click', () => {
         })
         .then(data => {
             document.getElementById('result').innerText = data.text;
+            document.getElementById('retryButton').style.display = 'none';
         })
         .catch(error => {
             console.error('Fetch error:', error);
             document.getElementById('result').innerText = 'Error recognizing text. Please try again.';
+            document.getElementById('retryButton').style.display = 'block';
         });
     } else {
         alert('Please upload a file first.');
     }
-});
+};
+
+const resetUpload = () => {
+    document.getElementById('fileUpload').value = '';
+    document.getElementById('filePreview').style.display = 'none';
+    document.getElementById('result').innerText = '';
+    document.getElementById('retryButton').style.display = 'none';
+};
+
+document.getElementById('convertButton').addEventListener('click', convertFileToText);
+document.getElementById('retryButton').addEventListener('click', convertFileToText);
+document.getElementById('resetButton').addEventListener('click', resetUpload);
