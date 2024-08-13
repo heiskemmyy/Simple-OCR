@@ -3,14 +3,16 @@ document.getElementById('fileUpload').addEventListener('change', (event) => {
     const preview = document.getElementById('filePreview');
     const reader = new FileReader();
 
-    reader.onload = (e) => {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-    };
-
     if (file && file.type.startsWith('image/')) {
+        reader.onload = (e) => {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        };
         reader.readAsDataURL(file);
+    } else if (file && file.type === 'application/pdf') {
+        preview.style.display = 'none';
     } else {
+        alert('Unsupported file type. Please upload an image or PDF.');
         preview.style.display = 'none';
     }
 });
