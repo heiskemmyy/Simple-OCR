@@ -1,3 +1,17 @@
+let serverIp = '';
+
+const getServerIp = async () => {
+    try {
+        const response = await fetch('/server-ip');
+        const data = await response.json();
+        serverIp = data.ip;
+    } catch (error) {
+        console.error('Error fetching server IP:', error);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', getServerIp);
+
 document.getElementById('fileUpload').addEventListener('change', (event) => {
     const file = event.target.files[0];
     const preview = document.getElementById('filePreview');
@@ -9,10 +23,8 @@ document.getElementById('fileUpload').addEventListener('change', (event) => {
             preview.style.display = 'block';
         };
         reader.readAsDataURL(file);
-    } else if (file && file.type === 'application/pdf') {
-        preview.style.display = 'none';
     } else {
-        alert('Unsupported file type. Please upload an image or PDF.');
+        alert('Unsupported file type. Please upload an image.');
         preview.style.display = 'none';
     }
 });
@@ -23,7 +35,7 @@ const convertFileToText = () => {
         const formData = new FormData();
         formData.append('file', fileUpload);
 
-        fetch('http://10.40.65.17:4001/upload', {
+        fetch(`http://${serverIp}:4001/upload`, {
             method: 'POST',
             body: formData
         })
