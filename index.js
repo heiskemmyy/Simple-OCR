@@ -25,22 +25,20 @@ app.post("/upload", upload.single("file"), (req, res) => {
         return res.status(500).json({ error: "Error reading PDF file." });
       }
 
-      pdfParse(data)
-        .then((result) => {
-          res.json({ text: result.text });
-          fs.unlink(filePath, (err) => {
-            if (err) console.error("Error deleting file:", err);
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).json({ error: "Error recognizing text from PDF." });
+      pdfParse(data).then((result) => {
+        res.json({ text: result.text });
+        fs.unlink(filePath, (err) => {
+          if (err) console.error("Error deleting file:", err);
         });
+      }).catch((error) => {
+        console.error(error);
+        res.status(500).json({ error: "Error recognizing text from PDF." });
+      });
     });
   } else if (fileType.startsWith("image/")) {
     Tesseract.recognize(filePath, "eng", {
       logger: (m) => console.log(m),
-      langPath: path.join(__dirname, "tessdata"),
+      langPath: path.join(__dirname, 'tessdata')
     })
       .then(({ data: { text } }) => {
         res.json({ text });
