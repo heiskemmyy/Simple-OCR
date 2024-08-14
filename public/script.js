@@ -23,7 +23,7 @@ const convertFileToText = () => {
         const formData = new FormData();
         formData.append('file', fileUpload);
 
-        fetch('/upload', {
+        fetch('http://10.40.65.17:4001/upload', {
             method: 'POST',
             body: formData
         })

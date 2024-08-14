@@ -1,5 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
 const express = require("express");
 const multer = require("multer");
 const Tesseract = require("tesseract.js");
@@ -7,11 +5,13 @@ const pdfParse = require("pdf-parse");
 const os = require("os");
 const path = require("path");
 const fs = require("fs");
+const cors = require("cors");
 const port = 4001;
 
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/upload", upload.single("file"), (req, res) => {
@@ -27,6 +27,9 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
       pdfParse(data).then((result) => {
         res.json({ text: result.text });
+        fs.unlink(filePath, (err) => {
+          if (err) console.error("Error deleting file:", err);
+        });
       }).catch((error) => {
         console.error(error);
         res.status(500).json({ error: "Error recognizing text from PDF." });
@@ -39,6 +42,9 @@ app.post("/upload", upload.single("file"), (req, res) => {
     })
       .then(({ data: { text } }) => {
         res.json({ text });
+        fs.unlink(filePath, (err) => {
+          if (err) console.error("Error deleting file:", err);
+        });
       })
       .catch((error) => {
         console.error(error);
