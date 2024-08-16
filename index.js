@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const Tesseract = require("tesseract.js");
+const Tess = require("tesseract.js");
 const os = require("os");
 const path = require("path");
 const fs = require("fs");
@@ -18,9 +18,8 @@ app.post("/upload", upload.single("file"), (req, res) => {
   const fileType = req.file.mimetype;
 
   if (fileType.startsWith("image/")) {
-    Tesseract.recognize(filePath, "eng", {
+    Tess.recognize(filePath, "eng", {
       logger: (m) => console.log(m),
-      langPath: path.join(__dirname, 'tessdata')
     })
       .then(({ data: { text } }) => {
         res.json({ text });
