@@ -19,8 +19,8 @@ const upload = multer({ dest: uploadDir });
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
-const key = fs.readFileSync('key.pem');
-const cert = fs.readFileSync('cert.pem');
+const key = fs.readFileSync(path.join(__dirname, 'key.pem'));
+const cert = fs.readFileSync(path.join(__dirname, 'cert.pem'));
 
 const httpsServer = https.createServer({ key, cert }, app);
 
@@ -68,14 +68,12 @@ app.get("/server-ip", (req, res) => {
   res.json({ ip: serverIp });
 });
 
-httpsServer.listen(4001, () => {
-  console.log('HTTPS server running on port 4001');
+httpsServer.listen(port, () => {
+  console.log(`HTTPS server running on port ${port}`);
 });
 
-app
-  .listen(port, "0.0.0.0", () => {
-    console.log(`Server is running at http://${serverIp}:${port}`);
-  })
-  .on("error", (err) => {
-    console.error("Error starting server:", err);
-  });
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server is running at http://${serverIp}:${port}`);
+}).on("error", (err) => {
+  console.error("Error starting server:", err);
+});

@@ -40,7 +40,7 @@ const convertFileToText = () => {
     const formData = new FormData();
     formData.append("file", fileUpload);
 
-    fetch(`http://${serverIp}:4001/upload`, {
+    fetch(`https://${serverIp}:4001/upload`, {
       method: "POST",
       body: formData,
     })
@@ -64,28 +64,14 @@ const convertFileToText = () => {
     alert("Please upload a file first.");
   }
 };
+
 const resetUpload = () => {
-    document.getElementById('fileUpload').value = '';
-    document.getElementById('filePreview').style.display = 'none';
-    document.getElementById('result').innerText = '';
-    document.getElementById('retryButton').style.display = 'none';
+  document.getElementById('fileUpload').value = '';
+  document.getElementById('filePreview').style.display = 'none';
+  document.getElementById('result').innerText = '';
+  document.getElementById('retryButton').style.display = 'none';
 };
 
-const resetPreview = () => {
-  document.getElementById("filePreview").style.display = "none";
-  document.getElementById("fileUpload").value = "";
-  document.getElementById("result").innerText = "";
-};
-
-document.getElementById("retryButton").addEventListener("click", () => {
-  resetPreview();
-  convertFileToText();
-});
-
-document
-  .getElementById("convertButton")
-  .addEventListener("click", convertFileToText);
-document
-  .getElementById("retryButton")
-  .addEventListener("click", convertFileToText);
+document.getElementById("convertButton").addEventListener("click", convertFileToText);
+document.getElementById("retryButton").addEventListener("click", convertFileToText);
 document.getElementById("resetButton").addEventListener("click", resetUpload);
