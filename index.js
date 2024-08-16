@@ -8,7 +8,12 @@ const cors = require("cors");
 const port = 4001;
 
 const app = express();
-const upload = multer({ dest: "uploads/" });
+
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+const upload = multer({ dest: uploadDir });
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
@@ -32,7 +37,9 @@ app.post("/upload", upload.single("file"), (req, res) => {
         res.status(500).json({ error: "Error recognizing text from image." });
       });
   } else {
-    res.status(400).json({ error: "Unsupported file type. Please upload an image." });
+    res
+      .status(400)
+      .json({ error: "Unsupported file type. Please upload an image." });
   }
 });
 

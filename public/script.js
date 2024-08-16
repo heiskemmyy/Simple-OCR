@@ -30,6 +30,11 @@ document.getElementById('fileUpload').addEventListener('change', (event) => {
 });
 
 const convertFileToText = () => {
+    if (!serverIp) {
+        alert('Server IP not fetched yet. Please try again.');
+        return;
+    }
+
     const fileUpload = document.getElementById('fileUpload').files[0];
     if (fileUpload) {
         const formData = new FormData();
@@ -58,6 +63,7 @@ const convertFileToText = () => {
         alert('Please upload a file first.');
     }
 };
+
 
 const resetUpload = () => {
     document.getElementById('fileUpload').value = '';
