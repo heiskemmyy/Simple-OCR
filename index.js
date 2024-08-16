@@ -62,10 +62,9 @@ app.get("/server-ip", (req, res) => {
   res.json({ ip: serverIp });
 });
 
-app
-  .listen(port, "0.0.0.0", () => {
-    console.log(`Server is running at http://${serverIp}:${port}`);
-  })
-  .on("error", (err) => {
-    console.error("Error starting server:", err);
-  });
+app;
+listen(port, "0.0.0.0", () => {
+  console.log(`Server is running at http://${serverIp}:${port}`);
+}).on("error", (err) => {
+  console.error("Error starting server:", err);
+});
