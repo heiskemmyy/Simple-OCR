@@ -1,3 +1,4 @@
+const https = require('https');
 const express = require("express");
 const multer = require("multer");
 const Tess = require("tesseract.js");
@@ -17,6 +18,11 @@ const upload = multer({ dest: uploadDir });
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
+
+const key = fs.readFileSync('key.pem');
+const cert = fs.readFileSync('cert.pem');
+
+const httpsServer = https.createServer({ key, cert }, app);
 
 app.post("/upload", upload.single("file"), (req, res) => {
   const filePath = req.file.path;
@@ -60,6 +66,10 @@ const serverIp = getServerIp();
 
 app.get("/server-ip", (req, res) => {
   res.json({ ip: serverIp });
+});
+
+httpsServer.listen(4001, () => {
+  console.log('HTTPS server running on port 4001');
 });
 
 app

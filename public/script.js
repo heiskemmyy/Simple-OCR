@@ -64,6 +64,12 @@ const convertFileToText = () => {
     alert("Please upload a file first.");
   }
 };
+const resetUpload = () => {
+    document.getElementById('fileUpload').value = '';
+    document.getElementById('filePreview').style.display = 'none';
+    document.getElementById('result').innerText = '';
+    document.getElementById('retryButton').style.display = 'none';
+};
 
 const resetPreview = () => {
   document.getElementById("filePreview").style.display = "none";
