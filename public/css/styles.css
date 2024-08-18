@@ -1,35 +1,25 @@
 /* Add this to your existing styles.css */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
     background-color: #2b2d42;
     color: #edf2f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 90%;
-    max-width: 600px;
-    padding: 20px;
     background-color: #1e1e2e;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
+    padding: 20px;
+    max-width: 600px; /* Set maximum width to medium size */
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #edf2f4;
 }
 
 .upload-section {
@@ -37,23 +27,20 @@ h1 {
 }
 
 #imageUpload {
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    font-size: 1.1em;
+    font-size: 0.9em; /* Adjusted font size for better appearance */
 }
 
 .image-preview {
     width: 100%;
-    height: 300px;
-    margin-bottom: 20px;
-    display: none;
+    height: auto;
+    max-height: 300px; /* Ensure image doesn't get too large */
     background-color: #edf2f4;
     border-radius: 10px;
     overflow: hidden;
+    display: none;
 }
 
-.image-preview img {
+#imagePreview {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -61,20 +48,22 @@ h1 {
 
 textarea {
     width: 100%;
-    height: 150px;
-    margin-top: 20px;
+    min-height: 250px; /* Increased minimum height */
     padding: 10px;
     font-size: 1.1em;
     border-radius: 10px;
     border: none;
     background-color: #edf2f4;
     color: #2b2d42;
-    resize: none;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+textarea:focus {
+    outline: none;
 }
 
 button {
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 10px;
     font-size: 1.1em;
     cursor: pointer;
     border-radius: 5px;
@@ -82,28 +71,25 @@ button {
 }
 
 button:hover {
-    background-color: #ef233c;
+    opacity: 0.8;
 }
 
 .button-group {
-    display: flex;
-    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 #loadingSpinner {
-    margin: 20px auto;
-    display: none; /* Hide by default */
+    width: 3rem;
+    height: 3rem;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 768px) {
     .container {
-        width: 100%;
+        padding: 15px;
     }
-
     .button-group {
         flex-direction: column;
     }
-
     button {
         width: 100%;
         margin-bottom: 10px;
