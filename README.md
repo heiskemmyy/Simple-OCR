@@ -1,8 +1,5 @@
-Here’s the updated `README.md` for your OCR text recognition project, reflecting the latest changes:
 
----
-
-# OCR Text Recognition
+# Simple OCR
 
 ## Overview
 
