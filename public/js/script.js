@@ -6,6 +6,7 @@ const extractTextBtn = document.getElementById('extractTextBtn');
 const extractedTextArea = document.getElementById('extractedText');
 const exportToWordBtn = document.getElementById('exportToWordBtn');
 const clearBtn = document.getElementById('clearBtn');
+const loadingSpinner = document.getElementById('loadingSpinner');
 
 // Image preview functionality
 imageUpload.addEventListener('change', function(event) {
@@ -31,6 +32,8 @@ extractTextBtn.addEventListener('click', function() {
         return;
     }
 
+    loadingSpinner.style.display = 'block'; // Show spinner
+
     Tesseract.recognize(
         file,
         'eng',
@@ -44,6 +47,8 @@ extractTextBtn.addEventListener('click', function() {
     }).catch(function(error) {
         console.error(error);
         alert("Text extraction failed. Please try again.");
+    }).finally(function() {
+        loadingSpinner.style.display = 'none'; // Hide spinner
     });
 });
 
