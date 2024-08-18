@@ -6,8 +6,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #1e1e2e;
-    color: white;
+    background-color: #2b2d42;
+    color: #edf2f4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,10 +18,15 @@ body {
 .container {
     width: 90%;
     max-width: 600px;
+    padding: 20px;
+    background-color: #1e1e2e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
 h1 {
+    font-size: 2em;
     margin-bottom: 20px;
 }
 
@@ -33,6 +38,7 @@ h1 {
     display: block;
     margin: 0 auto;
     padding: 10px;
+    font-size: 1.1em;
 }
 
 .image-preview {
@@ -40,6 +46,9 @@ h1 {
     height: 300px;
     margin-bottom: 20px;
     display: none;
+    background-color: #edf2f4;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .image-preview img {
@@ -48,30 +57,51 @@ h1 {
     object-fit: contain;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 10px 0;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 1em;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
 textarea {
     width: 100%;
     height: 150px;
     margin-top: 20px;
+    padding: 10px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: none;
+    background-color: #edf2f4;
+    color: #2b2d42;
     resize: none;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #8d99ae;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ef233c;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 600px) {
     .container {
         width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
     }
 }

@@ -1,5 +1,3 @@
-// script.js
-
 // DOM Elements
 const imageUpload = document.getElementById('imageUpload');
 const imagePreview = document.getElementById('imagePreview');
@@ -7,6 +5,7 @@ const imagePreviewContainer = document.getElementById('imagePreviewContainer');
 const extractTextBtn = document.getElementById('extractTextBtn');
 const extractedTextArea = document.getElementById('extractedText');
 const exportToWordBtn = document.getElementById('exportToWordBtn');
+const clearBtn = document.getElementById('clearBtn');
 
 // Image preview functionality
 imageUpload.addEventListener('change', function(event) {
@@ -61,4 +60,12 @@ exportToWordBtn.addEventListener('click', function() {
     link.href = URL.createObjectURL(blob);
     link.download = 'extracted-text.doc';
     link.click();
+});
+
+// Clear button functionality
+clearBtn.addEventListener('click', function() {
+    imageUpload.value = '';
+    imagePreview.src = '';
+    imagePreviewContainer.style.display = 'none';
+    extractedTextArea.value = '';
 });

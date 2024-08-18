@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OCR Text Recognition</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js"
-      integrity="sha512-nodtkMdJZK6MzKRMeGK/MrIcuXdbnHzPaBHuZhNYJTL+uB4KszN88EXfwXDny2z/Ce6ooCUPHiPzFAqdBK0B1A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-  </head>
-  <body>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
     <div class="container">
-      <h1>Image to Text Converter</h1>
-      <div class="upload-section">
-        <label for="imageUpload">Select an Image</label>
-        <input type="file" id="imageUpload" accept="image/*" />
-      </div>
-      <div class="image-preview" id="imagePreviewContainer">
-        <img id="imagePreview" alt="Selected Image Preview" />
-      </div>
-      <button id="extractTextBtn">Extract to Text</button>
-      <textarea id="extractedText" readonly></textarea>
-      <button id="exportToWordBtn">Export to Word</button>
+        <h1>Image to Text Converter</h1>
+        <div class="upload-section">
+            <label for="imageUpload">Select an Image</label>
+            <input type="file" id="imageUpload" accept="image/*">
+        </div>
+        <div class="image-preview" id="imagePreviewContainer">
+            <img id="imagePreview" alt="Selected Image Preview" />
+        </div>
+        <button id="extractTextBtn">Extract to Text</button>
+        <textarea id="extractedText" readonly placeholder="Extracted text will appear here..."></textarea>
+        <div class="button-group">
+            <button id="exportToWordBtn">Export to Word</button>
+            <button id="clearBtn">Clear</button>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
     <script src="./js/script.js"></script>
-  </body>
+</body>
 </html>
