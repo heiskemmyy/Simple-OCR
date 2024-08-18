@@ -1,65 +1,111 @@
-# OCR Text Recognition App
+Here’s the updated `README.md` for your OCR text recognition project, reflecting the latest changes:
 
-This project is a simple OCR (Optical Character Recognition) web application that extracts text from image files and allows users to export the extracted text to a Word file. The app features a clear button to reset the process and a responsive design for both desktop and mobile views.
+---
+
+# OCR Text Recognition
+
+## Overview
+
+This project is an OCR (Optical Character Recognition) tool that extracts text from image files. It provides a user-friendly interface to preview images, extract text, and export the extracted text to a Word document. The design is responsive and optimized for various devices.
 
 ## Features
-1. **Image Preview**: Preview the selected image before extracting the text.
-2. **Extract to Text**: Extract text from the image using Tesseract.js.
-3. **Export to Word**: Download the extracted text as a `.doc` file.
-4. **Clear Functionality**: Reset the image preview and extracted text.
-5. **Responsive Design**: Optimized for mobile and desktop views.
-6. **Loading Indicator**: Displays a spinner while the text extraction is in progress.
+
+- **Image Preview**: Allows users to preview the selected image before extraction.
+- **Text Extraction**: Extracts text from the previewed image when the "Extract to Text" button is clicked.
+- **Export to Word**: Exports the extracted text to a Word document for easy editing.
+- **Clear Function**: Clears the image and extracted text, allowing for a new selection.
+- **Responsive Design**: Ensures the application is usable on both mobile and desktop devices.
+- **Loading Indicator**: Displays a spinner during the text extraction process to inform users of ongoing activity.
 
 ## Technologies Used
-- **HTML**: Structure of the app.
-- **CSS**: Styling and responsiveness.
-- **JavaScript**: Image handling, text extraction, export functionality, and clear button.
-- **Tesseract.js**: OCR engine for text extraction.
-- **Bootstrap**: UI framework for styling and loading indicator.
 
-## Getting Started
+- **HTML**: Markup language for structuring the webpage.
+- **CSS**: Styling the webpage with Bootstrap for responsive design and custom styles.
+- **JavaScript**: Implements functionality for image handling, text extraction, and exporting.
+- **Tesseract.js**: JavaScript library for performing OCR.
+- **Bootstrap**: Framework for styling and responsive design.
 
-### Prerequisites
-- A modern browser (Chrome, Firefox, Edge, etc.).
-- An internet connection to access the Tesseract.js and Bootstrap CDNs.
-
-### Setup
-
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/ocr-text-recognition.git
-    cd ocr-text-recognition
-    ```
-
-2. **Open the project:**
-   Open the `index.html` file in a browser.
-
-### Usage
-
-1. **Select an image**: Click the file input to select an image from your device.
-2. **Preview the image**: The image will be displayed in the preview area.
-3. **Extract text**: Click the "Extract to Text" button to start the OCR process and view the extracted text in the textarea.
-4. **Export to Word**: After extracting the text, click the "Export to Word" button to download the text as a Word
-
- document.
-5. **Clear**: Click the "Clear" button to reset the image preview and extracted text.
-
-## Project Structure
+## File Structure
 
 ```
-- public/
-  - css/
-    - styles.css        # Styles for the UI
-  - js/
-    - script.js         # OCR and export logic
-  - index.html          # Main UI
-- README.md             # Project documentation
+public/
+  css/
+    styles.css
+  js/
+    script.js
+  index.html
+server.js
+package.json
+README.md
 ```
 
-## Future Improvements
-- Add support for multiple languages in OCR.
-- Include additional image processing features to improve text recognition.
-- Allow users to copy or edit extracted text directly within the app.
+### `index.html`
 
-## License
-This project is licensed under the MIT License.
+Contains the HTML structure of the application, including:
+- An image upload section.
+- A preview section for the selected image.
+- Buttons for extracting text, exporting to Word, and clearing inputs.
+- A text area for displaying extracted text.
+- A loading spinner to indicate ongoing text extraction.
+
+### `styles.css`
+
+Includes custom styles for:
+- Container and layout adjustments.
+- Image preview and text area styling.
+- Button and loading spinner styling.
+- Responsive design adjustments for various screen sizes.
+
+### `script.js`
+
+Handles the functionality for:
+- Image previewing.
+- Text extraction using Tesseract.js.
+- Text exporting to a Word document.
+- Clearing inputs and handling UI interactions.
+
+### `server.js`
+
+Sets up the Node.js server for handling requests. 
+
+## Setup
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. **Navigate to the Project Directory**
+
+   ```bash
+   cd <project-directory>
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the Server**
+
+   ```bash
+   node server.js
+   ```
+
+5. **Open the Application**
+
+   Visit `http://localhost:3000` in your browser.
+
+## Usage
+
+1. **Upload an Image**: Click the "Choose File" button to select an image from your device.
+2. **Preview the Image**: The selected image will be displayed in the preview area.
+3. **Extract Text**: Click the "Extract to Text" button to start the OCR process. The extracted text will appear in the text area.
+4. **Export to Word**: Click the "Export to Word" button to download the extracted text as a Word document.
+5. **Clear Inputs**: Click the "Clear" button to reset the application.
+
+## Contributing
+
+If you would like to contribute to this project, please fork the repository and submit a pull request with your changes.
