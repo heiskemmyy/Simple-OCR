@@ -73,13 +73,13 @@ Sets up the Node.js server for handling requests.
 1. **Clone the Repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/heiskemmyy/Simple-OCR.git
    ```
 
 2. **Navigate to the Project Directory**
 
    ```bash
-   cd <project-directory>
+   cd Simple-OCR
    ```
 
 3. **Install Dependencies**
@@ -91,7 +91,7 @@ Sets up the Node.js server for handling requests.
 4. **Start the Server**
 
    ```bash
-   node server.js
+   npm start
    ```
 
 5. **Open the Application**
